@@ -1,0 +1,134 @@
+Project Name: CVRanker — AI-Lite ATS Resume Screening System
+What it does (simple + solid + real-world useful):
+
+Admin Panel
+
+Create job posts (title, skills required, description).
+
+View all uploaded resumes for each job.
+
+View auto-calculated scores.
+
+Download the shortlisted folder.
+
+Student Portal
+
+Select job post.
+
+Upload CV (PDF or text).
+
+CV is stored in a folder + record saved in JSON.
+
+ATS Skill Matching Engine (Python)
+
+Extract text from resume (no AI needed).
+
+Compare with job requirements.
+
+Calculate:
+
+Skill match %
+
+Keyword frequency score
+
+Experience score (optional)
+
+Sort CVs based on score.
+
+Database
+
+entire system runs on one JSON file:
+
+users
+
+job posts
+
+resume records
+
+scoring data
+
+🎯 Why this project is GOOD
+
+Real companies use resume filtering — this is realistic.
+
+JSON database = perfect for Replit.
+
+HTML/CSS/JS for UI, Python for backend = perfect stack.
+
+Looks like a real product, not just a “student project”.
+
+Easy to present. Easy to expand. Easy to deploy.
+
+🧠 Your Replit Prompt (copy-paste into Replit Ghostwriter)
+You are an expert full-stack developer. Build a complete project named **CVRanker** using only:
+- HTML, CSS, JavaScript (frontend)
+- Python (backend)
+- JSON file as database
+- No frameworks except Flask allowed
+
+Project Requirements:
+1. There must be two interfaces:
+   - **Admin Panel**
+   - **Student Resume Upload Portal**
+
+2. Admin Panel Features:
+   - Login (credentials stored in JSON)
+   - Create new job posts with fields: job_id, title, description, required_skills (list)
+   - View uploaded resumes for each job
+   - View auto-generated ATS score for each resume
+   - Button to download shortlisted resumes (score ≥ 60%)
+
+3. Student Portal:
+   - Select job post from dropdown
+   - Upload resume (PDF or text)
+   - Store file in /resumes/job_id/user_timestamp.pdf
+   - Save record to JSON
+
+4. ATS Scoring Engine (Python):
+   - Extract text from PDF (use PyPDF2)
+   - Match text with required skills
+   - Algorithm:
+       skill_score = (matched_skills / total_required_skills) * 100
+       keyword_score = number_of_required_keywords_found_in_resume
+       total_score = skill_score + keyword_score
+   - Save score back to JSON
+
+5. Database (JSON) structure:
+{
+  "admins": [
+    {"username": "admin", "password": "1234"}
+  ],
+  "jobs": [],
+  "resumes": []
+}
+
+6. Folder Structure:
+- /static (css, js)
+- /templates (html files)
+- /data/db.json
+- /resumes/
+
+7. Provide full code:
+   - app.py (Flask)
+   - HTML files
+   - CSS
+   - JS
+   - Python ATS scoring code
+   - DB read/write functions
+
+Follow clean UI design and include comments in all important functions.
+
+🚀 Want me to generate the entire project code for you?
+
+I can give you:
+
+✅ file structure
+✅ app.py backend
+✅ templates
+✅ CSS & JS
+✅ JSON DB
+✅ PDF parsing & scoring engine
+✅ admin login
+✅ job creation page
+✅ resume upload page
+✅ scoring dashboard

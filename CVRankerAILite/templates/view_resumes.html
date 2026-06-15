@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Resumes - {{ job.title }} - CVRanker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div>
+                <h1>{{ job.title }}</h1>
+                <p class="tagline">{{ job.job_id }}</p>
+                <a href="{{ url_for('admin_dashboard') }}" class="back-link">← Back to Dashboard</a>
+            </div>
+            <div class="header-actions">
+                {% if resumes|length > 0 %}
+                <a href="{{ url_for('download_shortlisted', job_id=job.job_id) }}" class="btn btn-primary">Download Shortlisted (Score ≥ 60)</a>
+                {% endif %}
+            </div>
+        </header>
+        
+        <main class="resumes-main">
+            <div class="job-info-box">
+                <h3>Job Description</h3>
+                <p>{{ job.description }}</p>
+                <div class="required-skills">
+                    <strong>Required Skills:</strong>
+                    <div class="skills-tags">
+                        {% for skill in job.required_skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if job.hidden_keywords and job.hidden_keywords|length > 0 %}
+                <div class="required-skills" style="margin-top: 15px; padding: 15px; background: #fef3c7; border-radius: 8px; border: 2px dashed #f59e0b;">
+                    <strong style="color: #92400e;">🔒 Hidden Priority Keywords (Not visible to students):</strong>
+                    <div class="skills-tags" style="margin-top: 8px;">
+                        {% for keyword in job.hidden_keywords %}
+                        <span class="skill-tag" style="background: #fbbf24; color: #78350f;">{{ keyword }}</span>
+                        {% endfor %}
+                    </div>
+                    <small style="color: #92400e; display: block; margin-top: 8px;">Each keyword match gives +2 bonus per occurrence</small>
+                </div>
+                {% endif %}
+            </div>
+            
+            <h2>Submitted Resumes ({{ resumes|length }})</h2>
+            
+            {% if resumes|length == 0 %}
+            <div class="empty-state">
+                <p>No resumes submitted yet for this position.</p>
+            </div>
+            {% else %}
+            <div class="resumes-table-container">
+                <table class="resumes-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>Total Score</th>
+                            <th>Skill Match %</th>
+                            <th>Keywords</th>
+                            <th>🔒 Bonus</th>
+                            <th>Matched Skills</th>
+                            <th>Uploaded</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resume in resumes %}
+                        <tr class="{% if resume.ats_score.total_score >= 60 %}shortlisted{% endif %}">
+                            <td class="rank">{{ loop.index }}</td>
+                            <td><strong>{{ resume.student_name }}</strong></td>
+                            <td>{{ resume.student_email }}</td>
+                            <td class="score-cell">
+                                <span class="score-badge score-{{ 'high' if resume.ats_score.total_score >= 60 else 'low' }}">
+                                    {{ resume.ats_score.total_score }}
+                                </span>
+                            </td>
+                            <td>{{ resume.ats_score.skill_score }}%</td>
+                            <td>{{ resume.ats_score.keyword_count }}</td>
+                            <td style="background: #fef3c7; font-weight: bold; color: #92400e;">
+                                +{{ resume.ats_score.get('hidden_keyword_bonus', 0) }}
+                                {% if resume.ats_score.get('matched_hidden_keywords', [])|length > 0 %}
+                                <div style="font-size: 0.8em; font-weight: normal; margin-top: 3px;">
+                                    ({{ resume.ats_score.matched_hidden_keywords|join(', ') }})
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="matched-skills">
+                                    {% if resume.ats_score.matched_skills|length > 0 %}
+                                        {% for skill in resume.ats_score.matched_skills %}
+                                        <span class="skill-tag skill-matched">{{ skill }}</span>
+                                        {% endfor %}
+                                    {% else %}
+                                        <span class="no-match">None</span>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td>{{ resume.uploaded_at[:10] }}</td>
+                            <td>
+                                {% if resume.ats_score.total_score >= 60 %}
+                                <span class="status-badge status-shortlisted">Shortlisted</span>
+                                {% else %}
+                                <span class="status-badge status-rejected">Not Shortlisted</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+</body>
+</html>

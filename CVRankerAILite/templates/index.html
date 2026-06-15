@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVRanker - ATS Resume Screening System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>CVRanker</h2>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('admin_login') }}" class="nav-link">Admin</a>
+                <a href="{{ url_for('student_portal') }}" class="nav-link">Students Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="main-header">
+            <h1>CVRanker AI</h1>
+            <p class="tagline">Smart Resume Screening with Intelligent ATS Technology</p>
+        </header>
+        
+        <main class="home-main">
+            <section class="hero-section">
+                <h2>Welcome to the Future of Recruitment</h2>
+                <p class="hero-description">CVRanker uses advanced ATS (Applicant Tracking System) technology to automatically screen and rank resumes, saving you hours of manual review time.</p>
+            </section>
+
+            <section class="features-section">
+                <h3>Why Choose CVRanker?</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Intelligent Skill Matching</h4>
+                        <p>Automatically matches candidate skills with job requirements using smart keyword detection and analysis.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Instant Scoring</h4>
+                        <p>Get immediate ATS scores for every resume based on skill match percentage and keyword frequency.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>Smart Ranking</h4>
+                        <p>Resumes are automatically ranked from highest to lowest score, helping you identify top candidates instantly.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h4>Secure & Private</h4>
+                        <p>All resume data is stored securely. Candidates don't see scores, ensuring unbiased recruitment process.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📁</div>
+                        <h4>Easy Management</h4>
+                        <p>Organize resumes by job position, download shortlisted candidates, and manage multiple job posts effortlessly.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h4>Custom Keywords</h4>
+                        <p>Set hidden priority keywords to identify candidates with portfolios, GitHub profiles, or specific qualifications.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <h3>How CVRanker Works</h3>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Admin Creates Job Post</h4>
+                        <p>Add job title, description, required skills, and optional hidden keywords for better candidate evaluation.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Candidates Apply</h4>
+                        <p>Students upload their resumes through the simple, user-friendly student portal.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>AI Analyzes Resumes</h4>
+                        <p>Our ATS engine extracts text, matches skills and keywords, and calculates comprehensive scores.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Review & Shortlist</h4>
+                        <p>Admin reviews ranked candidates and downloads shortlisted resumes for the next interview round.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portal-cards">
+                <div class="portal-card">
+                    <h3>For Recruiters</h3>
+                    <p>Post jobs, review candidates, and download shortlisted resumes</p>
+                    <a href="{{ url_for('admin_login') }}" class="btn btn-primary">Admin Login</a>
+                </div>
+                
+                <div class="portal-card">
+                    <h3>For Job Seekers</h3>
+                    <p>Browse open positions and upload your resume to apply</p>
+                    <a href="{{ url_for('student_portal') }}" class="btn btn-secondary">Apply Now</a>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Time Saved</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Accurate Scoring</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Resumes Supported</div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 CVRanker AI. Streamlining recruitment with intelligent technology.</p>
+        </footer>
+    </div>
+</body>
+</html>
