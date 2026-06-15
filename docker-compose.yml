@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  cvranker:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./CVRankerAILite/data:/app/CVRankerAILite/data
+      - ./CVRankerAILite/resumes:/app/CVRankerAILite/resumes
+    environment:
+      - SESSION_SECRET=your-secret-key-change-in-production
+      - FLASK_ENV=production

@@ -1,0 +1,74 @@
+{
+  "admins": [
+    {
+      "username": "admin",
+      "password": "1234"
+    }
+  ],
+  "jobs": [
+    {
+      "job_id": "JOB001",
+      "title": "full stack developer ",
+      "description": "don't join in this jhob this is a fully bull shit ",
+      "required_skills": [
+        "html",
+        "css",
+        "js",
+        "mysql",
+        "php",
+        "github",
+        "docker"
+      ],
+      "hidden_keywords": [
+        "project",
+        "github"
+      ],
+      "created_at": "2025-11-22T11:14:28.388187"
+    }
+  ],
+  "resumes": [
+    {
+      "resume_id": "RES0001",
+      "job_id": "JOB001",
+      "student_name": "vignesh",
+      "student_email": "bbotn@dd.com",
+      "file_path": "resumes\\JOB001\\vignesh_20251122_111519.pdf",
+      "uploaded_at": "2025-11-22T11:15:20.032425",
+      "ats_score": {
+        "skill_score": 0.0,
+        "keyword_count": 0,
+        "hidden_keyword_bonus": 0,
+        "matched_hidden_keywords": [],
+        "total_score": 0.0,
+        "matched_skills": []
+      }
+    },
+    {
+      "resume_id": "RES0002",
+      "job_id": "JOB001",
+      "student_name": "vigneshwr",
+      "student_email": "bbotn@dd.com",
+      "file_path": "resumes\\JOB001\\vigneshwr_20251122_111621.pdf",
+      "uploaded_at": "2025-11-22T11:16:21.730659",
+      "ats_score": {
+        "skill_score": 100.0,
+        "keyword_count": 13,
+        "hidden_keyword_bonus": 4,
+        "matched_hidden_keywords": [
+          "project",
+          "github"
+        ],
+        "total_score": 117.0,
+        "matched_skills": [
+          "html",
+          "css",
+          "js",
+          "mysql",
+          "php",
+          "github",
+          "docker"
+        ]
+      }
+    }
+  ]
+}

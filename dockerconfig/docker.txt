@@ -1,0 +1,6 @@
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Or with Docker directly
+docker build -t cvranker .
+docker run -p 5000:5000 cvranker
